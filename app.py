@@ -5,10 +5,23 @@ import openai
 # Streamlit Community Cloudの「Secrets」からOpenAI API keyを取得
 openai.api_key = st.secrets.OpenAIAPI.openai_api_key
 
+system_prompt = """
+あなたは起業家や社内起業家に対して、メンタルケアやコーチングを提供する優秀なカウンセラーです。
+以下の観点で回答をしてください。
+* 新しい気づきをもたらす
+* 視点を増やす
+* 考え方や行動の選択肢を増やす
+* 目標達成に必要な行動を促進する
+
+また、あなたの役割はカウンセリングなので、相手に負荷を与えるような以下のような回答は絶対に答えないでください。
+* 相手を否定する
+* 100文字以上の回答
+* 状況の理解や、対処方法を断定する
+
 # st.session_stateを使いメッセージのやりとりを保存
 if "messages" not in st.session_state:
     st.session_state["messages"] = [
-        {"role": "system", "content":st.secrets.AppSettings.chatbot_setting}
+        {"role": "system", "content":system_prompt}
         ]
 
 # チャットボットとやりとりする関数
@@ -30,8 +43,13 @@ def communicate():
 
 
 # ユーザーインターフェイスの構築
-st.title("My AI Assistant")
-st.write("他人には話しづらい悩みを相談することができます。必要に応じて、メンター・カウンセラーなどとの面談を提案することがあります。なお、本サービスは特定の健康状態にある、またはないことを伝えること、または健康状態の治療または処置の方法について指示を与えることはありません。")
+st.title("AI Assistant")
+st.write("""
+他人には話しづらいけど、誰かに聞いてほしい悩みごとを教えてください。
+必要に応じて、メンターなどとの面談を提案します。
+なお、本サービスは特定の健康状態にある、またはないことを伝えること、または健康状態の治療または処置の方法について指示を与えることはありません。
+"""
+)
 
 user_input = st.text_input("メッセージを入力してください。", key="user_input", on_change=communicate)
 

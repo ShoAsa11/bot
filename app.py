@@ -8,7 +8,7 @@ openai.api_key = st.secrets.OpenAIAPI.openai_api_key
 # st.session_stateを使いメッセージのやりとりを保存
 if "messages" not in st.session_state:
     st.session_state["messages"] = [
-        {"role": "system", "content": "あなたは優秀なアシスタントAIです。"}
+        {"role": "system", "content":st.secrets.AppSettings.chatbot_setting}
         ]
 
 # チャットボットとやりとりする関数
@@ -31,7 +31,9 @@ def communicate():
 
 # ユーザーインターフェイスの構築
 st.title("My AI Assistant")
-st.write("他人には話しづらい悩みを相談することができます。試作品のため、適切ではない内容を回答する可能性があります。")
+st.write("他人には話しづらい悩みを相談することができます。
+必要に応じて、メンター・カウンセラーなどとの面談を提案することがあります。
+なお、本サービスは特定の健康状態にある、またはないことを伝えること、または健康状態の治療または処置の方法について指示を与えることはありません。")
 
 user_input = st.text_input("メッセージを入力してください。", key="user_input", on_change=communicate)
 

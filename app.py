@@ -43,22 +43,19 @@ def communicate():
 st.title("AI Assistant")
 st.write("他人には話しづらいけど、誰かに聞いてほしい悩みごとを教えてください。必要に応じて、メンターなどとの面談を提案します。なお、本サービスは特定の健康状態にある、またはないことを伝えること、または健康状態の治療または処置の方法について指示を与えることはありません。")
 
-# ---------- ボタン ----------
+
+# ---------- 気分 ----------
+st.sidebar.title("相談")
+st.sidebar.button("晴"):
+st.sidebar.button("曇"):
+st.sidebar.button("雨"):
+
+# ---------- 相談 ----------
 st.sidebar.title("相談")
 if st.sidebar.button("メンターに相談"):
     st.sidebar.write("メールにて日程調整のご連絡をいたします")
 else:
     st.sidebar.write("　")
-
-# ---------- セレクトボックス ----------
-st.sidebar.title("気分")
-df_select = pd.DataFrame({
-    "feeling": ["晴", "曇", "雨"]
-    })
-selected = st.sidebar.selectbox(
-    "いまの気分はどうですか？",
-    df_side["feeling"])
-st.sidebar.write("あなたは" + str(selected) + "を選びました！")
 
 # ---------- メッセージ ----------
 user_input = st.text_input("メッセージを入力してください（事業の方向性、チームメンバー、精神のコントロール、家庭との両立…）", key="user_input", on_change=communicate)

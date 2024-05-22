@@ -31,7 +31,7 @@ def communicate():
 
 # ユーザーインターフェイスの構築
 st.title("My AI Assistant")
-st.write(他人には話しづらい悩みを相談することができます。試作品のため、適切ではない内容を回答する可能性があります。")
+st.write("他人には話しづらい悩みを相談することができます。試作品のため、適切ではない内容を回答する可能性があります。")
 
 user_input = st.text_input("メッセージを入力してください。", key="user_input", on_change=communicate)
 

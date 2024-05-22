@@ -43,6 +43,23 @@ def communicate():
 st.title("AI Assistant")
 st.write("他人には話しづらいけど、誰かに聞いてほしい悩みごとを教えてください。必要に応じて、メンターなどとの面談を提案します。なお、本サービスは特定の健康状態にある、またはないことを伝えること、または健康状態の治療または処置の方法について指示を与えることはありません。")
 
+# ---------- ボタン ----------
+st.title("st.button()")
+if st.button("メンターに相談"):
+    st.write("メールにて日程調整のご連絡をいたします")
+else:
+    st.write("　")
+
+# ---------- セレクトボックス ----------
+st.title("st.selectbox()")
+df_select = pd.DataFrame({
+    "feeling": ["☀️", "🌤️", "☁️", "🌧️", "⛈️"]
+    })
+selected = st.selectbox(
+    "いまの気分はどうですか？",
+    df_side["feeling"])
+st.write("あなたは" + str(selected) + "を選びました！")
+
 user_input = st.text_input("メッセージを入力してください。", key="user_input", on_change=communicate)
 
 if st.session_state["messages"]:
@@ -54,21 +71,3 @@ if st.session_state["messages"]:
             speaker="🤖"
 
         st.write(speaker + ": " + message["content"])
-
-# ---------- サイドバー ----------
-st.sidebar.title("st.sidebar")
-
-df_side = pd.DataFrame({
-    "feeling": ["☀️", "🌤️", "☁️", "🌧️", "⛈️"]
-    })
-selected_side = st.sidebar.selectbox(
-    "いまの気分はどうですか？",
-    df_side["feeling"]
-    )
-st.sidebar.write("あなたは" + str(selected_side) + "を選びました")
-
-st.sidebar.title("st.button()")
-if st.button("メンターに相談"):
-    st.write("メールにて日程調整のご連絡をいたします")
-else:
-    st.write("　")

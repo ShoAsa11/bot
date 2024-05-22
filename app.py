@@ -45,10 +45,8 @@ st.write("他人には話しづらいけど、誰かに聞いてほしい悩み�
 
 
 # ---------- 気分 ----------
-st.sidebar.title("相談")
-st.sidebar.button("晴"):
-st.sidebar.button("曇"):
-st.sidebar.button("雨"):
+y = st.sidebar.slider("今の気分を教えて")
+st.sidebar.write(str(y))
 
 # ---------- 相談 ----------
 st.sidebar.title("相談")

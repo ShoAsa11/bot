@@ -17,6 +17,7 @@ system_prompt = """
 * 相手を否定する
 * 100文字以上の回答
 * 状況の理解や、対処方法を断定する
+"""
 
 # st.session_stateを使いメッセージのやりとりを保存
 if "messages" not in st.session_state:

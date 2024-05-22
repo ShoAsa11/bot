@@ -54,3 +54,21 @@ if st.session_state["messages"]:
             speaker="🤖"
 
         st.write(speaker + ": " + message["content"])
+
+# ---------- サイドバー ----------
+st.sidebar.title("st.sidebar")
+
+df_side = pd.DataFrame({
+    "feeling": ["☀️", "🌤️", "☁️", "🌧️", "⛈️"]
+    })
+selected_side = st.sidebar.selectbox(
+    "いまの気分はどうですか？",
+    df_side["feeling"]
+    )
+st.sidebar.write("あなたは" + str(selected_side) + "を選びました")
+
+st.sidebar.title("st.button()")
+if st.button("メンターに相談"):
+    st.write("メールにて日程調整のご連絡をいたします")
+else:
+    st.write("　")

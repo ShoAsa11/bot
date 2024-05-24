@@ -66,7 +66,7 @@ options = ["起業家", "社内起業家", "企業ワーカー"]
 selected_options = st.multiselect("ボタンを選択してください", options)
 
 # 選択されたボタンを表示
-st.write("選択されたボタン:", selected_options
+st.write("選択されたボタン:", selected_options)
 
 
 # ---------- ユーザーごとの質問 ----------

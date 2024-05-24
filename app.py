@@ -94,3 +94,7 @@ if st.session_state["messages"]:
             speaker="🤖"
 
         st.write(speaker + ": " + message["content"])
+
+# AIの回答から会話を始める
+st.write("🤖: [アシスタントの回答]")
+st.write("🙂: [ユーザーの回答]")

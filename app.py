@@ -65,30 +65,25 @@ options = ["起業家", "社内起業家", "企業ワーカー"]
 # ボタンを選択するための選択式のボタンを作成
 selected_option = st.selectbox("あなたの立場を選択してください", options)
 
-# 選択されたボタンを表示
-st.write("選択されたボタン:", selected_option)
-
 # 選択された立場ごとに次の質問を表示
 if "起業家" in selected_option:
     st.title("質問の例")
     questions = ["責任が重く押しつぶされそうな気持ちになる", "メンバーとうまく同じ絵を共有できない", "自分のビジョンの自信が揺らいできた", "メンバーに弱いところを見せられない"]
     selected_question = st.selectbox("質問を選択してください", questions)
-    st.write("選択された質問:", selected_question)
     
 elif "社内起業家" in selected_option:
     st.title("質問の例")
     questions = ["検討が同じところをぐるぐる回っている気がする", "価値観・バックグラウンドの違いが大きく、社内の合意形成に長く時間がかかる", "周囲にやりたいことを理解されない", "解決したい課題がふわふわしている"]
     selected_question = st.selectbox("質問を選択してください", questions)
-    st.write("選択された質問:", selected_question)
              
 elif "企業ワーカー" in selected_option:
     st.title("質問の例")
     questions = ["マネージャーが考えていることについていけない", "今死に物狂いになっていることが自分にとって成長につながっているのか不安", "ロールモデルになるような人がいない", "他人と比較して落ち込む"]
     selected_question = st.selectbox("質問を選択してください", questions)
-    st.write("選択された質問:", selected_question)
 
 # ---------- メッセージ ----------
-user_input = st.text_input("メッセージを入力してください（事業の方向性、チームメンバー、精神のコントロール、家庭との両立…）", key="user_input", on_change=communicate)
+st.title("メッセージを入力してください（事業の方向性、チームメンバー、精神のコントロール、家庭との両立…")
+st.text_input("メッセージを入力してください", value=selected_question, key="user_input")
 
 if st.session_state["messages"]:
     messages = st.session_state["messages"]

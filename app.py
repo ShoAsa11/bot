@@ -82,7 +82,7 @@ elif "企業ワーカー" in selected_option:
     selected_question = st.selectbox("質問を選択してください", questions)
 
 # ---------- メッセージ ----------
-st.title("メッセージを入力してください（事業の方向性、チームメンバー、精神のコントロール、家庭との両立…")
+st.title("メッセージを入力してください（事業の方向性、チームメンバー、精神のコントロール、家庭との両立…）")
 st.text_input("メッセージを入力してください", value=selected_question, key="user_input")
 
 if st.session_state["messages"]:

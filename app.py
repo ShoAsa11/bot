@@ -44,16 +44,51 @@ st.title("他人には話しづらいけど、誰かに聞いてほしい悩み�
 st.write("本サービスは試作品です。特定の健康状態にある、またはないことを伝えること、または健康状態の治療または処置の方法について指示を与えることはありません。")
 
 
-# ---------- 気分 ----------
+# ---------- サイドバー ----------
 y = st.sidebar.slider("今の気分を教えて")
 st.sidebar.write(str(y))
 
-# ---------- 相談 ----------
 st.sidebar.title("相談")
 if st.sidebar.button("メンターに相談"):
     st.sidebar.write("メールにて日程調整のご連絡をいたします")
 else:
     st.sidebar.write("　")
+
+
+# ---------- ユーザー種別 ----------
+# メインのタイトルを設定
+st.title("あなたの立場")
+
+# ボタンの選択肢を定義
+options = ["起業家", "社内起業家", "企業ワーカー"]
+
+# ボタンを選択するためのマルチセレクトボックスを作成
+selected_options = st.multiselect("ボタンを選択してください", options)
+
+# 選択されたボタンを表示
+st.write("選択されたボタン:", selected_options
+
+
+# ---------- ユーザーごとの質問 ----------
+if "起業家" in selected_options:
+    st.title("質問の例")
+    options = ["責任が重く押しつぶされそうな気持ちになる", "メンバーとうまく同じ絵を共有できない", "自分のビジョンの自信が揺らいできた", "メンバーに弱いところを見せられない"]
+    selected_options = st.multiselect("ボタンを選択してください", options)
+    st.write("選択されたボタン:", selected_options)
+    
+elif "社内起業家" in selected_options:
+    st.title("質問の例")
+    options = ["検討が同じところをぐるぐる回っている気がする", "価値観・バックグラウンドの違いが大きく、社内の合意形成に長く時間がかかる", "周囲にやりたいことを理解されない", "解決したい課題がふわふわしている"]
+    selected_options = st.multiselect("ボタンを選択してください", options)
+    st.write("選択されたボタン:", selected_options)
+             
+elif "企業ワーカー" in selected_options:
+    st.title("質問の例")
+    options = ["マネージャーが考えていることについていけない", "今死に物狂いになっていることが自分にとって成長につながっているのか不安", "ロールモデルになるような人がいない", "他人と比較して落ち込む"]
+    selected_options = st.multiselect("ボタンを選択してください", options)
+    st.write("選択されたボタン:", selected_options)
+
+
 
 # ---------- メッセージ ----------
 user_input = st.text_input("メッセージを入力してください（事業の方向性、チームメンバー、精神のコントロール、家庭との両立…）", key="user_input", on_change=communicate)
